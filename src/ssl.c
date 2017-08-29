@@ -14195,15 +14195,17 @@ WOLFSSL_X509* wolfSSL_sk_X509_pop(STACK_OF(WOLFSSL_X509_NAME)* sk) {
     return x509;
 }
 
-STACK_OF(WOLFSSL_X509_NAME)* wolfSSL_sk_X509_new_null(void)
+STACK_OF(WOLFSSL_X509)* wolfSSL_sk_X509_new_null(void)
 {
-    STACK_OF(WOLFSSL_X509)* ca;
-    
-    ca = (STACK_OF(WOLFSSL_X509)*)malloc(sizeof(STACK_OF(WOLFSSL_X509)));
+    STACK_OF(WOLFSSL_X509)* newX509;
 
-    XMEMSET(ca, 0, sizeof(STACK_OF(WOLFSSL_X509)));
-
-    return ca;
+    newX509 = (STACK_OF(WOLFSSL_X509)*)XMALLOC(sizeof(STACK_OF(WOLFSSL_X509)), NULL, DYNAMIC_TYPE_X509);
+    if (newX509 != NULL) {
+        newX509->num = 0;
+        newX509->data.x509 = NULL;
+        newX509->next = NULL;
+    }
+    return newX509;
 }
 
 /* free structure for x509 stack */

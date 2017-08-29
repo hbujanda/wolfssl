@@ -1,0 +1,224 @@
+NET+OS Version 7.5.2.2
+Copyright (c) 1997-2011, 2013, 2014 Digi International, Inc.
+
+PLATFORM: connectme9210can 2M/8M [Mar 07 2017 16:07:18]
+APPLICATION: WolfSSL Server Example Application [Mar  9 2017 20:18:39]
+-----------------------------------------------------------------------------
+NETWORK INTERFACE PARAMETERS:
+  IP address on LAN is 192.168.1.100
+  LAN interface's subnet mask is 255.255.0.0
+  IP address of default gateway to other networks is 192.168.11.101
+  Primary DNS server address is 10.49.8.62
+  Secondary DNS server address is 10.10.8.62
+  Primary SNTP Server IP address is 129.6.15.28
+  Secondary SNTP Server IP address is 129.6.15.29
+HARDWARE PARAMETERS:
+  Serial channels will use a baud rate of 115200
+  This board's serial number is N99999999
+  This board's Ethernet MAC Address is 00:40:9D:43:35:97
+  After board is reset, start-up code will wait 3 seconds
+  Default duplex setting for Ethernet connection: default
+-----------------------------------------------------------------------------
+Press any key in 3 seconds to change these settings.
+
+
+Serial CLI Started
+IAM:AUTO-CONFIGURED IPv6 FE80::240:9DFF:FE43:3597 on eth0:3
+IAM:STATIC IPv4 192.168.1.100 on eth0
+Network IP configured.
+FTP server is ready.
+Waiting 3 seconds to get time from SNTP server....
+IAM:AUTOIP IPv4 169.254.229.52 on eth0:0
+Done waiting....
+Current time is Thu Mar  9 14:47:46 2017
+wolfSSL Entering wolfSSL_Init
+wolfSSL Entering WOLFSSL_CTX_new_ex
+wolfSSL Entering wolfSSL_CertManagerNew
+wolfSSL Leaving WOLFSSL_CTX_new, return 0
+wolfSSL Entering SSL_CTX_set_default_passwd_cb
+wolfSSL Entering wolfSSL_CTX_use_certificate_chain_file
+Getting dynamic buffer
+wolfSSL Entering PemToDer
+Checking cert signature type
+wolfSSL Entering GetExplicitVersion
+wolfSSL Entering GetMyVersion
+wolfSSL Entering GetSerialNumber
+Got Cert Header
+wolfSSL Entering GetAlgoId
+wolfSSL Entering GetObjectId()
+Got Algo ID
+Getting Cert Name
+Getting Cert Name
+Got Subject Name
+wolfSSL Entering GetAlgoId
+wolfSSL Entering GetObjectId()
+Got Key
+Not ECDSA cert signature
+wolfSSL Entering wolfSSL_CTX_use_PrivateKey_file
+Getting dynamic buffer
+wolfSSL Entering PemToDer
+wolfSSL Entering GetMyVersion
+wolfSSL Entering SSL_new
+wolfSSL Entering EVP_sha1
+wolfSSL Entering EVP_DigestInit
+wolfSSL Entering SHA_Init
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestFinal
+wolfSSL Entering SHA_Final
+wolfSSL Entering EVP_DigestInit
+wolfSSL Entering SHA_Init
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestFinal
+wolfSSL Entering SHA_Final
+wolfSSL Entering EVP_DigestInit
+wolfSSL Entering SHA_Init
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestUpdate
+wolfSSL Entering SHA_Update
+wolfSSL Entering EVP_DigestFinal
+wolfSSL Entering SHA_Final
+wolfSSL Leaving SSL_new, return 0
+wolfSSL Entering wolfSSL_SetHsDoneCb
+wolfSSL Entering SSL_set_fd
+wolfSSL Entering SSL_set_read_fd
+wolfSSL Leaving SSL_set_read_fd, return 0
+wolfSSL Entering SSL_set_write_fd
+wolfSSL Leaving SSL_set_write_fd, return 0
+Getting dynamic buffer
+wolfSSL Entering PemToDer
+wolfSSL Entering wolfSSL_SetTmpDH
+wolfSSL Leaving wolfSSL_SetTmpDH, return 0
+wolfSSL Entering SSL_accept()
+growing input buffer
+
+received record layer msg
+wolfSSL Entering DoHandShakeMsg()
+wolfSSL Entering DoHandShakeMsgType
+processing client hello
+Matched No Compression
+Extended Master Secret extension received
+wolfSSL Entering MatchSuite
+wolfSSL Entering VerifyServerSuite
+Requires RSA
+Requires DHE
+Verified suite validity
+wolfSSL Leaving DoHandShakeMsgType(), return 0
+wolfSSL Leaving DoHandShakeMsg(), return 0
+accept state ACCEPT_CLIENT_HELLO_DONE
+accept state ACCEPT_FIRST_REPLY_DONE
+growing output buffer
+
+Shrinking output buffer
+
+accept state SERVER_HELLO_SENT
+growing output buffer
+
+Shrinking output buffer
+
+accept state CERT_SENT
+wolfSSL Entering SendCertificateStatus
+accept state CERT_STATUS_SENT
+wolfSSL Entering SendServerKeyExchange
+wolfSSL Entering GetMyVersion
+growing output buffer
+
+wolfSSL Entering RsaSign
+wolfSSL Leaving RsaSign, return 0
+wolfSSL Entering VerifyRsaSign
+wolfSSL Using RSA PKCSV15 padding
+wolfSSL Leaving VerifyRsaSign, return 0
+Shrinking output buffer
+
+wolfSSL Leaving SendServerKeyExchange, return 0
+accept state KEY_EXCHANGE_SENT
+accept state CERT_REQ_SENT
+growing output buffer
+
+Shrinking output buffer
+
+accept state SERVER_HELLO_DONE
+growing input buffer
+
+received record layer msg
+wolfSSL Entering DoHandShakeMsg()
+wolfSSL Entering DoHandShakeMsgType
+processing client key exchange
+wolfSSL Entering DoClientKeyExchange
+wolfSSL Leaving DoClientKeyExchange, return 0
+wolfSSL Leaving DoHandShakeMsgType(), return 0
+wolfSSL Leaving DoHandShakeMsg(), return 0
+received record layer msg
+got CHANGE CIPHER SPEC
+received record layer msg
+wolfSSL Entering DoHandShakeMsg()
+wolfSSL Entering DoHandShakeMsgType
+processing finished
+wolfSSL Leaving DoHandShakeMsgType(), return 0
+wolfSSL Leaving DoHandShakeMsg(), return 0
+accept state  ACCEPT_SECOND_REPLY_DONE
+accept state  TICKET_SENT
+growing output buffer
+
+Shrinking output buffer
+
+accept state  CHANGE_CIPHER_SENT
+growing output buffer
+
+Shrinking output buffer
+
+accept state ACCEPT_FINISHED_DONE
+accept state ACCEPT_THIRD_REPLY_DONE
+Shrinking input buffer
+
+wolfSSL Leaving SSL_accept(), return 0
+wolfSSL Entering SSL_get_peer_certificate
+peer has no cert!
+wolfSSL Entering wolfSSL_FreeX509
+wolfSSL Entering ExternalFreeX509
+wolfSSL Entering SSL_get_version
+SSL version is TLSv1.2
+wolfSSL Entering SSL_get_current_cipher
+wolfSSL Entering SSL_CIPHER_get_name
+wolfSSL Entering wolfSSL_get_cipher_name_from_suite
+SSL cipher suite is TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+wolfSSL Entering wolfSSL_read()
+wolfSSL Entering wolfSSL_read_internal()
+wolfSSL Entering ReceiveData()
+growing input buffer
+
+received record layer msg
+got app DATA
+Shrinking input buffer
+
+wolfSSL Leaving ReceiveData(), return 14
+wolfSSL Leaving wolfSSL_read_internal(), return 14
+Client message: hello wolfssl!
+wolfSSL Entering SSL_write()
+growing output buffer
+
+Shrinking output buffer
+
+wolfSSL Leaving SSL_write(), return 23
+wolfSSL Entering SSL_shutdown()
+growing output buffer
+
+Shrinking output buffer
+
+wolfSSL Leaving SSL_shutdown(), return 2
+wolfSSL Entering SSL_free
+CTX ref count not 0 yet, no free
+wolfSSL Entering BIO_free
+wolfSSL Leaving SSL_free, return 0
+wolfSSL Entering SSL_CTX_free
+CTX ref count down to 0, doing full free
+wolfSSL Entering wolfSSL_CertManagerFree
+wolfSSL Leaving SSL_CTX_free, return 0
+wolfSSL Entering wolfSSL_Cleanup
+app end

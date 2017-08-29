@@ -1476,7 +1476,7 @@ static INLINE void CaCb(unsigned char* der, int sz, int type)
 #ifdef HAVE_STACK_SIZE
 
 typedef THREAD_RETURN WOLFSSL_THREAD (*thread_func)(void* args);
-
+#define STACK_CHECK_VAL 0x01
 
 static INLINE int StackSizeCheck(func_args* args, thread_func tf)
 {
@@ -1496,7 +1496,7 @@ static INLINE int StackSizeCheck(func_args* args, thread_func tf)
     if (ret != 0 || myStack == NULL)
         err_sys("posix_memalign failed\n");
 
-    XMEMSET(myStack, 0x01, stackSize);
+    XMEMSET(myStack, STACK_CHECK_VAL, stackSize);
 
     ret = pthread_attr_init(&myAttr);
     if (ret != 0)
@@ -1517,7 +1517,7 @@ static INLINE int StackSizeCheck(func_args* args, thread_func tf)
         err_sys("pthread_join failed");
 
     for (i = 0; i < stackSize; i++) {
-        if (myStack[i] != 0x01) {
+        if (myStack[i] != STACK_CHECK_VAL) {
             break;
         }
     }

@@ -42,6 +42,7 @@
     #define DEBUG_WOLFSSL
     #define NO_DEV_RANDOM
     #define NETOS
+    #define HAVE_STUNNEL
 #else
     /* The servers and clients */
     #define THREADX
@@ -53,6 +54,7 @@
     #define WOLFSSL_NO_CURRDIR
     #define DEBUG_WOLFSSL
     #define NETOS
+    #define HAVE_STUNNEL
 #endif /* HAVE_FIPS */
 
 #endif /* _NETOS_USER_SETTINGS_H_ */

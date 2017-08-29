@@ -22902,7 +22902,6 @@ void* wolfSSL_GetRsaDecCtx(WOLFSSL* ssl)
     WOLFSSL_X509 *wolfSSL_PEM_read_bio_X509(WOLFSSL_BIO *bp, WOLFSSL_X509 **x,
                                                  pem_password_cb *cb, void *u)
     {
-#ifndef NO_FILESYSTEM
         WOLFSSL_X509* x509 = NULL;
         unsigned char* pem = NULL;
         int pemSz;
@@ -22922,6 +22921,7 @@ void* wolfSSL_GetRsaDecCtx(WOLFSSL* ssl)
                 return NULL;
             }
         }
+#ifndef NO_FILESYSTEM
         else if (bp->type == BIO_FILE) {
             /* Read in next certificate from file but no more. */
             i = XFTELL(bp->file);
@@ -22933,6 +22933,7 @@ void* wolfSSL_GetRsaDecCtx(WOLFSSL* ssl)
                 return NULL;
             XFSEEK(bp->file, i, SEEK_SET);
         }
+#endif
         else
             return NULL;
 
@@ -22970,13 +22971,6 @@ void* wolfSSL_GetRsaDecCtx(WOLFSSL* ssl)
         (void)u;
 
         return x509;
-#else
-        (void)bp;
-        (void)x;
-        (void)cb;
-        (void)u;
-        return NULL;
-#endif
     }
 
 
@@ -23751,11 +23745,13 @@ void WOLFSSL_ERR_remove_thread_state(void* pid)
     return;
 }
 
+#if !defined(NO_FILESYSTEM)
 /***TBD ***/
 void wolfSSL_print_all_errors_fp(XFILE *fp)
 {
     (void)fp;
 }
+#endif
 
 int wolfSSL_SESSION_set_ex_data(WOLFSSL_SESSION* session, int idx, void* data)
 {

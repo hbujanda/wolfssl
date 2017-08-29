@@ -2475,16 +2475,16 @@ WOLFSSL_API size_t SSL_get_peer_finished(const WOLFSSL *s, void *buf, size_t cou
 #endif
 
 WOLFSSL_API int SSL_SESSION_set1_id(WOLFSSL_SESSION *s, const unsigned char *sid, unsigned int sid_len);
-WOLFSSL_API int SSL_SESSION_set1_id_context(WOLFSSL_SESSION *s, const unsigned char *sid_ctx, unsigned int sid_ctx_len);
+WOLFSSL_API int wolfSSL_SESSION_set1_id_context(WOLFSSL_SESSION *s, const unsigned char *sid_ctx, unsigned int sid_ctx_len);
 WOLFSSL_API void *X509_get0_tbs_sigalg(const WOLFSSL_X509 *x);
-WOLFSSL_API void X509_ALGOR_get0(WOLFSSL_ASN1_OBJECT **paobj, int *pptype, const void **ppval, const void *algor);
+WOLFSSL_API void wolfX509_ALGOR_get0(WOLFSSL_ASN1_OBJECT **paobj, int *pptype, const void **ppval, const void *algor);
 WOLFSSL_API void *X509_get_X509_PUBKEY(void * x);
-WOLFSSL_API int X509_PUBKEY_get0_param(WOLFSSL_ASN1_OBJECT **ppkalg, const unsigned char **pk, int *ppklen, void **pa, WOLFSSL_EVP_PKEY *pub);
-WOLFSSL_API int EVP_PKEY_bits(WOLFSSL_EVP_PKEY *pkey);
-WOLFSSL_API int i2d_X509(WOLFSSL_X509 *x, unsigned char **out);
-WOLFSSL_API int i2t_ASN1_OBJECT(char *buf, int buf_len, WOLFSSL_ASN1_OBJECT *a);
-WOLFSSL_API void SSL_CTX_set_tmp_dh_callback(WOLFSSL_CTX *ctx, WOLFSSL_DH *(*dh) (WOLFSSL *ssl, int is_export, int keylength));
-WOLFSSL_API STACK_OF(SSL_COMP) *SSL_COMP_get_compression_methods(void);
+WOLFSSL_API int wolfX509_PUBKEY_get0_param(WOLFSSL_ASN1_OBJECT **ppkalg, const unsigned char **pk, int *ppklen, void **pa, WOLFSSL_EVP_PKEY *pub);
+WOLFSSL_API int wolfEVP_PKEY_bits(WOLFSSL_EVP_PKEY *pkey);
+WOLFSSL_API int wolfi2d_X509(WOLFSSL_X509 *x, unsigned char **out);
+WOLFSSL_API int wolfi2t_ASN1_OBJECT(char *buf, int buf_len, WOLFSSL_ASN1_OBJECT *a);
+WOLFSSL_API void wolfSSL_CTX_set_tmp_dh_callback(WOLFSSL_CTX *ctx, WOLFSSL_DH *(*dh) (WOLFSSL *ssl, int is_export, int keylength));
+WOLFSSL_API STACK_OF(SSL_COMP) *wolfSSL_COMP_get_compression_methods(void);
 WOLFSSL_API int X509_STORE_load_locations(WOLFSSL_X509_STORE *ctx, const char *file, const char *dir);
 WOLFSSL_API int wolfSSL_sk_SSL_CIPHER_num(const void * p);
 WOLFSSL_API int wolfSSL_sk_SSL_COMP_zero(WOLFSSL_STACK* st);

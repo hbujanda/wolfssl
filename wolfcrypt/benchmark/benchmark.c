@@ -3762,7 +3762,7 @@ exit_ed_verify:
 
         (void)reset;
 
-        gettimeofday(&tv, 0);
+        gettimeofday(&tv, NULL);
 
         return (double)tv.tv_sec + (double)tv.tv_usec / 1000000;
     }

@@ -2015,6 +2015,8 @@ THREAD_RETURN WOLFSSL_THREAD client_test(void* args)
     Sleep(500);
 #elif defined(WOLFSSL_TIRTOS)
     Task_sleep(1);
+#elif defined(THREADX)
+    tx_thread_sleep(10);
 #else
     sleep(1);
 #endif
@@ -2068,6 +2070,8 @@ THREAD_RETURN WOLFSSL_THREAD client_test(void* args)
             Sleep(500);
 #elif defined(WOLFSSL_TIRTOS)
             Task_sleep(1);
+#elif defined(THREADX)
+            tx_thread_sleep(10);
 #else
             sleep(1);
 #endif
@@ -2244,6 +2248,8 @@ THREAD_RETURN WOLFSSL_THREAD client_test(void* args)
             Sleep(500);
         #elif defined(WOLFSSL_TIRTOS)
             Task_sleep(1);
+        #elif defined(THREADX)
+            tx_thread_sleep(10);
         #else
             sleep(1);
         #endif
@@ -2276,6 +2282,8 @@ THREAD_RETURN WOLFSSL_THREAD client_test(void* args)
             Sleep(500);
         #elif defined(WOLFSSL_TIRTOS)
             Task_sleep(1);
+        #elif defined(THREADX)
+            tx_thread_sleep(10);
         #else
             sleep(1);
         #endif
@@ -2386,7 +2394,7 @@ THREAD_RETURN WOLFSSL_THREAD client_test(void* args)
 /* so overall tests can pull in test function */
 #ifndef NO_MAIN_DRIVER
 
-    int main(int argc, char** argv)
+    int wolfssl_main(int argc, char** argv)
     {
         func_args args;
 

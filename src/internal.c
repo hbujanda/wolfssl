@@ -5725,7 +5725,7 @@ ProtocolVersion MakeDTLSv1_2(void)
 
     word32 LowResTimer(void)
     {
-        return (word32)time(0);
+        return (word32)time(NULL);
     }
 
 
@@ -16109,7 +16109,7 @@ void PickHashSigAlgo(WOLFSSL* ssl, const byte* hashSigAlgo,
                     XMEMCPY(info->packets[info->numberPackets].bufferValue,
                            data, sz);
             }
-            gettimeofday(&currTime, 0);
+            gettimeofday(&currTime, NULL);
             info->packets[info->numberPackets].timestamp.tv_sec  =
                                                              currTime.tv_sec;
             info->packets[info->numberPackets].timestamp.tv_usec =

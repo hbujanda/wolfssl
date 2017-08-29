@@ -10304,7 +10304,7 @@ int wolfSSL_set_compression(WOLFSSL* ssl)
             ssl->toInfoOn = 1;
             InitTimeoutInfo(&ssl->timeoutInfo);
 
-            if (gettimeofday(&startTime, 0) < 0)
+            if (gettimeofday(&startTime, NULL) < 0)
                 ERR_OUT(GETTIME_ERROR);
 
             /* use setitimer to simulate getitimer, init 0 myTimeout */
@@ -10354,7 +10354,7 @@ int wolfSSL_set_compression(WOLFSSL* ssl)
         /* do callbacks */
         if (toCb) {
             if (oldTimerOn) {
-                gettimeofday(&endTime, 0);
+                gettimeofday(&endTime, NULL);
                 SubtractTimes(endTime, startTime, totalTime);
                 /* adjust old timer for elapsed time */
                 if (CmpTimes(totalTime, oldTimeout.it_value, <))

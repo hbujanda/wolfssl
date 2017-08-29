@@ -1549,7 +1549,7 @@ THREAD_RETURN CYASSL_THREAD server_test(void* args)
 /* so overall tests can pull in test function */
 #ifndef NO_MAIN_DRIVER
 
-    int main(int argc, char** argv)
+    int wolfssl_main(int argc, char** argv)
     {
         func_args args;
         tcp_ready ready;

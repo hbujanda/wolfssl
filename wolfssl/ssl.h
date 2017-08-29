@@ -996,8 +996,21 @@ WOLFSSL_API void wolfSSL_ERR_dump_errors_fp(FILE* fp);
 
 enum { /* ssl Constants */
     SSL_ERROR_NONE      =  0,   /* for most functions */
+#if defined(NETOS)
+#if defined(SSL_SUCCESS)
+
+#if SSL_SUCCESS != 0
+#error "SSL_SUCCESS mismatch"
+#endif
+
+#else
+    SSL_SUCCESS         =  0,
+#endif
+    SSL_FAILURE         =  1,   /* for some functions */
+#else
     SSL_FAILURE         =  0,   /* for some functions */
     SSL_SUCCESS         =  1,
+#endif
     SSL_SHUTDOWN_NOT_DONE =  2,  /* call wolfSSL_shutdown again to complete */
 
     SSL_ALPN_NOT_FOUND  = -9,
@@ -1313,7 +1326,7 @@ WOLFSSL_API int wolfSSL_make_eap_keys(WOLFSSL*, void* key, unsigned int len,
             #include <sys/socket.h>
         #elif !defined(WOLFSSL_MDK_ARM) && !defined(WOLFSSL_IAR_ARM) && \
               !defined(WOLFSSL_PICOTCP) && !defined(WOLFSSL_ROWLEY_ARM) && \
-              !defined(WOLFSSL_EMBOS) && !defined(WOLFSSL_FROSTED)
+              !defined(WOLFSSL_EMBOS) && !defined(WOLFSSL_FROSTED) && !defined(NETOS)
             #include <sys/uio.h>
         #endif
         /* allow writev style writing */

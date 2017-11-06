@@ -81,6 +81,8 @@ certecc.der
 certecc.pem
 othercert.der
 othercert.pem
+certeccrsa.der
+certeccrsa.pem
 ntru-cert.der
 ntru-cert.pem
 ntru-key.raw
@@ -215,8 +217,10 @@ wrapper/CSharp/x64/
 
 # Visual Studio Code Workspace Files
 *.vscode
+*.userprefs
 
 IDE/INTIME-RTOS/Debug_*
+IDE/VS-ARM/.vs
 
 # Hexiwear
 IDE/HEXIWEAR/wolfSSL_HW/Debug

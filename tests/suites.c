@@ -1,6 +1,6 @@
 /* suites.c
  *
- * Copyright (C) 2006-2016 wolfSSL Inc.
+ * Copyright (C) 2006-2017 wolfSSL Inc.
  *
  * This file is part of wolfSSL.
  *
@@ -54,7 +54,7 @@ static char flagSep[] = " ";
     static char portFlag[] = "-p";
     static char svrPort[] = "0";
 #endif
-static char forceDefCipherListFlag[] = "-H";
+static char forceDefCipherListFlag[] = "-HdefCipherList";
 
 #ifdef WOLFSSL_ASYNC_CRYPT
     static int devId = INVALID_DEVID;
@@ -143,13 +143,13 @@ static int IsValidCipherSuite(const char* line, char* suite)
     #ifdef HAVE_QSH
         if (XSTRNCMP(suite, "QSH", 3) == 0) {
             if (wolfSSL_CTX_set_cipher_list(cipherSuiteCtx, suite + 4)
-                                                                 != SSL_SUCCESS)
+                                                                 != WOLFSSL_SUCCESS)
             return 0;
         }
     #endif
 
     if (found) {
-        if (wolfSSL_CTX_set_cipher_list(cipherSuiteCtx, suite) == SSL_SUCCESS)
+        if (wolfSSL_CTX_set_cipher_list(cipherSuiteCtx, suite) == WOLFSSL_SUCCESS)
             valid = 1;
     }
 
@@ -539,7 +539,7 @@ int SuiteTest(void)
 #ifdef WOLFSSL_STATIC_MEMORY
     if (wolfSSL_CTX_load_static_memory(&cipherSuiteCtx, NULL,
                                                    memory, sizeof(memory), 0, 1)
-            != SSL_SUCCESS) {
+            != WOLFSSL_SUCCESS) {
         printf("unable to load static memory and create ctx");
         args.return_code = EXIT_FAILURE;
         goto exit;
@@ -577,6 +577,16 @@ int SuiteTest(void)
         printf("error from script %d\n", args.return_code);
         exit(EXIT_FAILURE);
     }
+    #ifdef HAVE_ECC
+    /* add TLSv13 ECC extra suites */
+    strcpy(argv0[1], "tests/test-tls13-ecc.conf");
+    printf("starting TLSv13 ECC extra cipher suite tests\n");
+    test_harness(&args);
+    if (args.return_code != 0) {
+        printf("error from script %d\n", args.return_code);
+        exit(EXIT_FAILURE);
+    }
+    #endif
 #endif
 #if defined(HAVE_CURVE25519) && defined(HAVE_ED25519)
     /* add ED25519 certificate cipher suite tests */

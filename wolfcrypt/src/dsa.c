@@ -1,6 +1,6 @@
 /* dsa.c
  *
- * Copyright (C) 2006-2016 wolfSSL Inc.
+ * Copyright (C) 2006-2017 wolfSSL Inc.
  *
  * This file is part of wolfSSL.
  *
@@ -410,7 +410,7 @@ int wc_DsaSign(const byte* digest, byte* out, DsaKey* key, WC_RNG* rng)
         ret = MP_MOD_E;
 
     /* generate H from sha digest */
-    if (ret == 0 && mp_read_unsigned_bin(&H, digest,SHA_DIGEST_SIZE) != MP_OKAY)
+    if (ret == 0 && mp_read_unsigned_bin(&H, digest,WC_SHA_DIGEST_SIZE) != MP_OKAY)
         ret = MP_READ_E;
 
     /* generate s, s = (kInv * (H + x*r)) % q */
@@ -483,7 +483,7 @@ int wc_DsaVerify(const byte* digest, const byte* sig, DsaKey* key, int* answer)
     }
 
     /* put H into u1 from sha digest */
-    if (ret == 0 && mp_read_unsigned_bin(&u1,digest,SHA_DIGEST_SIZE) != MP_OKAY)
+    if (ret == 0 && mp_read_unsigned_bin(&u1,digest,WC_SHA_DIGEST_SIZE) != MP_OKAY)
         ret = MP_READ_E;
 
     /* w = s invmod q */

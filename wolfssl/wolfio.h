@@ -1,6 +1,6 @@
 /* io.h
  *
- * Copyright (C) 2006-2016 wolfSSL Inc.
+ * Copyright (C) 2006-2017 wolfSSL Inc.
  *
  * This file is part of wolfSSL.
  *
@@ -35,7 +35,7 @@
 #endif
 
 #if !defined(WOLFSSL_USER_IO)
-    /* Micrium uses NetSock I/O callbacks in io.c */
+    /* Micrium uses NetSock I/O callbacks in wolfio.c */
     #if !defined(USE_WOLFSSL_IO) && !defined(MICRIUM)
         #define USE_WOLFSSL_IO
     #endif

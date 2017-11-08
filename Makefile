@@ -64,7 +64,7 @@ C_OBJ=	$(OBJS)/aes.o\
 	$(OBJS)/hmac.o\
 	$(OBJS)/integer.o\
 	$(OBJS)/internal.o\
-	$(OBJS)/io.o\
+	$(OBJS)/wolfio.o\
 	$(OBJS)/keys.o\
 	$(OBJS)/logging.o\
 	$(OBJS)/md4.o\
